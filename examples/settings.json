@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Write|Edit", "hooks": [{ "type": "command", "command": "bash /path/to/claude-guardrail-hooks/hooks/guard-protected-files.sh" }] },
+      { "matcher": "Bash", "hooks": [{ "type": "command", "command": "GATED_FILE=data/items.json bash /path/to/claude-guardrail-hooks/hooks/diff-gated-commit.sh" }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "COMPONENT_DIRS=$HOME/.claude/skills:$HOME/.claude/agents ROSTER_FILES=$HOME/.claude/CLAUDE.md bash /path/to/claude-guardrail-hooks/hooks/registration-guard.sh" }] }
+    ],
+    "SessionStart": [
+      { "hooks": [{ "type": "command", "command": "COMPONENT_DIRS=$HOME/.claude/skills:$HOME/.claude/agents ROSTER_FILES=$HOME/.claude/CLAUDE.md bash /path/to/claude-guardrail-hooks/hooks/registration-guard.sh --banner" }] }
+    ]
+  }
+}
